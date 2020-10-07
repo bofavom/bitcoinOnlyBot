@@ -14,5 +14,11 @@ Gracias.
   `)
   return ctx.telegram.kickChatMember(ctx.chat.id, ctx.from.id)
     .then()
-    .catch(() => {})
+    .catch((err) => {
+      if (err.code === 400 && err.description === 'Bad Request: CHAT_ADMIN_REQUIRED') {
+        ctx.reply('No tengo permiso para expulsar al usuario.')
+      } else {
+        ctx.reply('Ha habido un problema intentando expulsar al usuario.')
+      }
+    })
 }
