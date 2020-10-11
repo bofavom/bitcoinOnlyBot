@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel index.js -d dist",
-    "start": "npm run build && nodemon dist/index.js",
-    "dev": "nodemon --exec babel-node index.js"
+    "start": "NODE_ENV=production npm run build && nodemon dist/index.js",
+    "dev": "NODE_ENV=development DEBUG=debug:* nodemon --exec babel-node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "dotenv": "^8.2.0",
+    "debug": "^4.2.0",
+    "mongodb": "^3.6.2",
+    "nconf": "^0.10.0",
     "telegraf": "^3.38.0"
   }
 }

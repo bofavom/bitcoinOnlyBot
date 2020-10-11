@@ -1,0 +1,9 @@
+{
+  "botToken": "1313811878:AAECXEwNogahARKYnwn1KQBvxleH86RASz8",
+  "mongodb": {
+    "user": "root",
+    "password": "secret",
+    "host": "localhost:27017",
+    "database": "bitcoinOnlyBot"
+  }
+}

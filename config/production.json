@@ -1,0 +1,9 @@
+{
+  "botToken": "",
+  "mongodb": {
+    "user": "",
+    "password": "",
+    "host": "",
+    "database": "bitcoinOnlyBot"
+  }
+}

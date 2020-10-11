@@ -1,13 +1,15 @@
 import { Telegraf } from 'telegraf'
-import dotenv from 'dotenv'
+
+import nconf from './lib/nconf'
+import { connectMongo } from './lib/database'
 
 import hashtag from './hashtag'
 import update from './update'
 import command from './command'
 
-dotenv.config()
+connectMongo()
 
-const bot = new Telegraf(process.env.BOT_TOKEN)
+const bot = new Telegraf(nconf.get('botToken'))
 
 hashtag(bot)
 update(bot)
@@ -18,3 +20,4 @@ bot.start((ctx) => {
 })
 
 bot.launch() 
+
