@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel index.js -d dist",
+    "build": "babel --extensions '.js' ./ -d dist --ignore node_modules",
     "start": "NODE_ENV=production npm run build && nodemon dist/index.js",
     "dev": "NODE_ENV=development DEBUG=debug:* nodemon --exec babel-node index.js"
   },
@@ -14,10 +14,12 @@
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "@babel/runtime": "^7.11.2",
     "axios": "^0.20.0",
     "debug": "^4.2.0",
     "mongodb": "^3.6.2",
