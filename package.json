@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel --extensions '.js' ./ -d dist --ignore node_modules",
-    "start": "NODE_ENV=production npm run build && nodemon dist/index.js",
+    "start": "NODE_ENV=production npm run build && node dist/index.js",
     "dev": "NODE_ENV=development DEBUG=debug:* nodemon --exec babel-node index.js"
   },
   "author": "",
