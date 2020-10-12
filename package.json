@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel --extensions '.js' ./ -d dist --ignore node_modules",
+    "clean": "rimraf ./dist",
+    "compile": "babel ./ -d dist --copy-files --ignore node_modules",
+    "build": "npm run clean && npm run compile",
     "start": "NODE_ENV=production npm run build && node dist/index.js",
     "dev": "NODE_ENV=development DEBUG=debug:* nodemon --exec babel-node index.js"
   },
@@ -25,6 +27,7 @@
     "mongodb": "^3.6.2",
     "nconf": "^0.10.0",
     "node-cron": "^2.0.3",
+    "rimraf": "^3.0.2",
     "telegraf": "^3.38.0"
   }
 }
