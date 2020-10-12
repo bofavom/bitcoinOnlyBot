@@ -4,6 +4,7 @@
     "user": "",
     "password": "",
     "host": "",
+    "protocol": "",
     "database": "bitcoinOnlyBot"
   },
   "collection": {
