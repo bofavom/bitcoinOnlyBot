@@ -1,4 +1,7 @@
-export default (ctx) => {
+import debug from './../lib/debug'
+import userWithoutAliasModel from './../model/userWithoutAlias'
+
+export default async (ctx) => {
   const username = ctx.from.username
   const welcome = `¡Bienvenido al grupo ${ctx.from.first_name}!`
   
@@ -8,17 +11,16 @@ export default (ctx) => {
   ctx.reply(`${welcome}
 
 Observo que no tienes un nombre de usuario / alias.
-Por favor, desde los ajustes de tu perfil, ponte uno y podrás volver a entrar al grupo.
+Por favor, desde los ajustes de tu perfil, ponte uno.
+En 24 horas serás expulsado si no lo haces.
 
 Gracias.
   `)
-  return ctx.telegram.kickChatMember(ctx.chat.id, ctx.from.id)
-    .then()
-    .catch((err) => {
-      if (err.code === 400 && err.description === 'Bad Request: CHAT_ADMIN_REQUIRED') {
-        ctx.reply('No tengo permiso para expulsar al usuario.')
-      } else {
-        ctx.reply('Ha habido un problema intentando expulsar al usuario.')
-      }
-    })
+  return userWithoutAliasModel.insertUserWithoutAlias(
+    Date.now(),
+    ctx.from.id,
+    ctx.chat.id
+  )
+  .then((result) => result ? debug('newChatMembers', 'Inserted new user without alias.') : debug('newChatMembers', 'Existing new user without alias.'))
+  .catch(() => debug('newChatMembersError', 'Error inserting new user without alias to the database.'))
 }

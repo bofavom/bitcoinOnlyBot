@@ -5,5 +5,11 @@
     "password": "",
     "host": "",
     "database": "bitcoinOnlyBot"
+  },
+  "collection": {
+    "userWithoutAlias": "userWithoutAlias"
+  },
+  "setting": {
+    "noAliasTimeLimit": 86400000
   }
 }
